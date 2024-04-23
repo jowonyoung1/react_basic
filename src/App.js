@@ -1,9 +1,9 @@
-import StyledBoxDiv from "./components/StyledComponent";
+import StyledComponent from "./components/StyledComponent";
 
 function App() {
   return (
     <div>
-      <StyledBoxDiv />
+      <StyledComponent />
     </div>
   );
 }
