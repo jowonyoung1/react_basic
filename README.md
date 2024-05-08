@@ -75,10 +75,51 @@ const Axios = () => {
   );
 };
 
-export default Axios;```
+export default Axios;
+```
 ````
 
 # 9.2 newsapi API 키 발급받기
 
 - https://newsapi.org/register
 - https://newsapi.org/s/south-korea-news-api
+- src/pages/Axios.js
+
+```js
+import axios from "axios";
+import { useState } from "react";
+
+const Axios = () => {
+  const [data, setData] = useState(null);
+
+  const onClick = async () => {
+    console.log("버튼 작동");
+    try {
+      const response = await axios.get(
+        "https://newsapi.org/v2/top-headlines?country=kr&apiKey=ee6871011b534f4693561ceba4febdc3",
+      );
+      setData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div>
+      <h2>axios</h2>
+      <div>
+        <button onClick={onClick}>불러오기</button>
+      </div>
+      {data && (
+        <textarea
+          rows={7}
+          readOnly={true}
+          value={JSON.stringify(data, null, 2)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default Axios;
+```
